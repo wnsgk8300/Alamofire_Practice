@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C2E852526E4896C00F9BD95 /* junha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2E852426E4896C00F9BD95 /* junha.jpeg */; };
+		3C2E852726E4918D00F9BD95 /* iphone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2E852626E4918D00F9BD95 /* iphone.jpg */; };
 		3CDCC57B26E462490087F1FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCC57A26E462490087F1FB /* AppDelegate.swift */; };
 		3CDCC57F26E462490087F1FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCC57E26E462490087F1FB /* ViewController.swift */; };
 		3CDCC58426E4624A0087F1FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CDCC58326E4624A0087F1FB /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C2E852426E4896C00F9BD95 /* junha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = junha.jpeg; path = ../../../../../../Downloads/junha.jpeg; sourceTree = "<group>"; };
+		3C2E852626E4918D00F9BD95 /* iphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iphone.jpg; path = ../../../../../../Downloads/iphone.jpg; sourceTree = "<group>"; };
 		3CDCC57726E462490087F1FB /* Alamofire_Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alamofire_Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDCC57A26E462490087F1FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CDCC57E26E462490087F1FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		3CDCC57926E462490087F1FB /* Alamofire_Practice */ = {
 			isa = PBXGroup;
 			children = (
+				3C2E852426E4896C00F9BD95 /* junha.jpeg */,
+				3C2E852626E4918D00F9BD95 /* iphone.jpg */,
 				3CDCC57A26E462490087F1FB /* AppDelegate.swift */,
 				3CDCC57E26E462490087F1FB /* ViewController.swift */,
 				3CDCC58326E4624A0087F1FB /* Assets.xcassets */,
@@ -130,6 +136,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2E852726E4918D00F9BD95 /* iphone.jpg in Resources */,
+				3C2E852526E4896C00F9BD95 /* junha.jpeg in Resources */,
 				3CDCC58726E4624A0087F1FB /* LaunchScreen.storyboard in Resources */,
 				3CDCC58426E4624A0087F1FB /* Assets.xcassets in Resources */,
 			);

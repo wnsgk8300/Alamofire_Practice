@@ -8,15 +8,31 @@
 import UIKit
 import SnapKit
 import Alamofire
+import MobileCoreServices
 
 class ViewController: UIViewController {
-
+    
+    struct RequestBodyFormDataKeyValue {
+        var sKey: String
+        var sValue: String
+        var dBlobData: Data
+    }
+    
     let getRequestButton = UIButton(type: .system)
     let postRequestButton = UIButton(type: .system)
+    let postFormDataButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+    }
+    func returnMimeType(fileExtension: String) -> String {
+        if let oUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension as NSString, nil)?.takeRetainedValue() {
+            if let mimeType = UTTypeCreatePreferredIdentifierForTag(oUTI, kUTTagClassMIMEType, nil)?.takeRetainedValue() {
+                return mimeType as String
+            }
+        }
+        return ""
     }
 }
 // MARK: @objc
@@ -52,7 +68,7 @@ extension ViewController {
         //request하고, 진행상황 확인하고, 응답받음?
         AF.request(sampleRequest).uploadProgress { progress in
         }.response(responseSerializer: serializer){ response in
-          //응답에 오류가 있는지 확인
+            //응답에 오류가 있는지 확인
             if(response.error == nil)
             {
                 var responseString: String!
@@ -77,7 +93,8 @@ extension ViewController {
         }
     }
     @objc func postButtonTap(_ sender: UIButton) {
-        var sURL = "https://httpbin.org/post"
+//        var sURL = "https://httpbin.org/post"
+        var sURL = "https://ptsv2.com/t/6trzb-1630820390/post"
         
         let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
         
@@ -95,10 +112,79 @@ extension ViewController {
                     responseString = response.response!.description
                 }
                 print(responseString)
+                print(response.response?.statusCode)
+                
+                var responseData: NSData!
+                responseData = response.data! as NSData
+                //data크기가 길이와 같다고 생각하고,
+                var iDataLength = responseData.length
+                print("Size: \(iDataLength) Bytes")
+                print("Response Time: \(response.metrics?.taskInterval.duration ?? 0)")
             }
         }
     }
+    @objc func postFormDataButtonTap(_ sender: UIButton) {
+        
+        var bodyKeyValue = [RequestBodyFormDataKeyValue]()
+        
+        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "a", sValue: "b", dBlobData: Data()))
+        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "c", sValue: "d", dBlobData: Data()))
+        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "e", sValue: "f", dBlobData: Data()))
+        
+        //[0] Name; [1] extension
+        let oArrArray = "iphone.jpg".components(separatedBy: ".")
+        let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
+        let oImage = UIImage(named: "iphone.jpg")
+        let dData = oImage?.pngData()
+        
+        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "file", sValue: "iphone", dBlobData: dData!))
+        
+        var sURL = "https://httpbin.org/post"
+//        var sURL = "https://ptsv2.com/t/6trzb-1630820390/post"
+        
+        let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
+        
+        var  sampleRequest = URLRequest(url: URL(string: sURL)!)
+        sampleRequest.httpMethod = HTTPMethod.post.rawValue
+        
+        AF.upload(multipartFormData: {multiPartFormData in
+            for formData in bodyKeyValue {
+                //data가 null인지 확인
+                if(formData.dBlobData.isEmpty) {
+                multiPartFormData.append(Data(formData.sValue.utf8), withName: formData.sKey)
+                } else {
+                    multiPartFormData.append(formData.dBlobData, withName: formData.sKey, fileName: "junha", mimeType: mimeType)
+                }
+            }
+        }, to: sURL, method: .post)
+        .uploadProgress{ progress in
+            //진행상황 표시
+            print(CGFloat(progress.fractionCompleted)*100) //0.12 = 12%
+        }
+        .response{ response in
+            if(response.error == nil) {
+                var responseString: String!
+                
+                responseString = ""
+                
+                if(response.data != nil) {
+                    responseString = String(bytes: response.data!, encoding: .utf8)!
+                } else {
+                    responseString = response.response!.description
+                }
+//                print(responseString)
+                print(response.response?.statusCode)
+                
+                var responseData: NSData!
+                responseData = response.data! as NSData
+                //data크기가 길이와 같다고 생각하고,
+                var iDataLength = responseData.length
+                print("Size: \(iDataLength) Bytes")
+                print("Response Time: \(response.metrics?.taskInterval.duration ?? 0)")            }
+        }
+    }
 }
+
 extension ViewController {
     func setUI() {
         setDetails()
@@ -110,11 +196,14 @@ extension ViewController {
         getRequestButton.addTarget(self, action: #selector(getButtonTap(_:)), for: .touchUpInside)
         postRequestButton.setTitle("POST Request", for: .normal)
         postRequestButton.addTarget(self, action: #selector(postButtonTap(_:)), for: .touchUpInside)
+        postFormDataButton.setTitle("POST FormData", for: .normal)
+        postFormDataButton.addTarget(self, action: #selector(postFormDataButtonTap(_:)), for: .touchUpInside)
     }
     
     func setLayout() {
         view.addSubview(getRequestButton)
         view.addSubview(postRequestButton)
+        view.addSubview(postFormDataButton)
         getRequestButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(100)
@@ -122,6 +211,10 @@ extension ViewController {
         postRequestButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(getRequestButton.snp.bottom).offset(40)
+        }
+        postFormDataButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(postRequestButton.snp.bottom).offset(40)
         }
     }
 }
