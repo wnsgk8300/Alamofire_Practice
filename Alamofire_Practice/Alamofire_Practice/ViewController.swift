@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         var sKey: String
         var sValue: String
         var dBlobData: Data
+        var mimeType: String
     }
     
     let getRequestButton = UIButton(type: .system)
@@ -127,17 +128,27 @@ extension ViewController {
         
         var bodyKeyValue = [RequestBodyFormDataKeyValue]()
         
-        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "a", sValue: "b", dBlobData: Data()))
+        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "a", sValue: "b", dBlobData: Data(), mimeType: ""))
         
         //[0] Name; [1] extension
-        var photoArray = [[]]
-        let oArrArray = "iPhone2.jpg".components(separatedBy: ".")
-        let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
-        let oImage = UIImage(named: "iPhone2.jpg")
-        let dData = oImage?.pngData()
+        var photoArray = ["iPhone1.jpg", "iPhone2.jpg", "iPhone3.jpg", "iPhone4.jpg", "iPhone5.jpg"]
+        
+        for file in photoArray {
+            let oArrArray = file.components(separatedBy: ".")
+            let oImage = UIImage(named: file)
+            let dData = oImage?.pngData()
+            let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
+            bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: file, dBlobData: dData!, mimeType: mimeType))
+        }
+//        let oArrArray = "iPhone2.jpg".components(separatedBy: ".")
+//        let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
+//        let oImage = UIImage(named: "iPhone2.jpg")
+//        let dData = oImage?.pngData()
+
+        
 //        let dData = oImage?.jpegData(compressionQuality: 1)
         
-        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: "iphone", dBlobData: dData!))
+//        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: "iphone1", dBlobData: dData!))
         
         
 //        var sURL = "https://httpbin.org/post"
@@ -155,7 +166,7 @@ extension ViewController {
                 if(formData.dBlobData.isEmpty) {
                 multiPartFormData.append(Data(formData.sValue.utf8), withName: formData.sKey)
                 } else {
-                    multiPartFormData.append(formData.dBlobData, withName: formData.sKey, fileName: "junha", mimeType: mimeType)
+                    multiPartFormData.append(formData.dBlobData, withName: formData.sKey, fileName: "junha", mimeType: formData.mimeType)
                 }
             }
         }, to: sURL, method: .post)
