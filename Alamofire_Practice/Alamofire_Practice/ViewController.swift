@@ -136,7 +136,8 @@ extension ViewController {
         for file in photoArray {
             let oArrArray = file.components(separatedBy: ".")
             let oImage = UIImage(named: file)
-            let dData = oImage?.pngData()
+//            let dData = oImage?.pngData()
+            let dData = oImage?.jpegData(compressionQuality: 3)
             let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
             bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: file, dBlobData: dData!, mimeType: mimeType))
         }
