@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C2E852526E4896C00F9BD95 /* junha.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2E852426E4896C00F9BD95 /* junha.jpeg */; };
-		3C2E852726E4918D00F9BD95 /* iphone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C2E852626E4918D00F9BD95 /* iphone.jpg */; };
 		3CDCC57B26E462490087F1FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCC57A26E462490087F1FB /* AppDelegate.swift */; };
 		3CDCC57F26E462490087F1FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDCC57E26E462490087F1FB /* ViewController.swift */; };
 		3CDCC58426E4624A0087F1FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CDCC58326E4624A0087F1FB /* Assets.xcassets */; };
 		3CDCC58726E4624A0087F1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CDCC58526E4624A0087F1FB /* LaunchScreen.storyboard */; };
 		3CDCC59026E462730087F1FB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDCC58F26E462730087F1FB /* Alamofire */; };
 		3CDCC59326E463020087F1FB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDCC59226E463020087F1FB /* SnapKit */; };
+		4B15DBC526E592E500732BE5 /* iPhone1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBC426E592E500732BE5 /* iPhone1.jpg */; };
+		4B15DBC726E59C6300732BE5 /* iPhone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBC626E59C6300732BE5 /* iPhone2.jpg */; };
+		4B15DBC926E59C6900732BE5 /* iPhone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBC826E59C6900732BE5 /* iPhone3.jpg */; };
+		4B15DBCB26E59C9600732BE5 /* iPhone5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBCA26E59C9600732BE5 /* iPhone5.jpg */; };
+		4B15DBCD26E59C9F00732BE5 /* iPhone4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBCC26E59C9F00732BE5 /* iPhone4.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C2E852426E4896C00F9BD95 /* junha.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = junha.jpeg; path = ../../../../../../Downloads/junha.jpeg; sourceTree = "<group>"; };
-		3C2E852626E4918D00F9BD95 /* iphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iphone.jpg; path = ../../../../../../Downloads/iphone.jpg; sourceTree = "<group>"; };
 		3CDCC57726E462490087F1FB /* Alamofire_Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alamofire_Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDCC57A26E462490087F1FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CDCC57E26E462490087F1FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3CDCC58326E4624A0087F1FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CDCC58626E4624A0087F1FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CDCC58826E4624A0087F1FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B15DBC426E592E500732BE5 /* iPhone1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone1.jpg; sourceTree = "<group>"; };
+		4B15DBC626E59C6300732BE5 /* iPhone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone2.jpg; sourceTree = "<group>"; };
+		4B15DBC826E59C6900732BE5 /* iPhone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone3.jpg; sourceTree = "<group>"; };
+		4B15DBCA26E59C9600732BE5 /* iPhone5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone5.jpg; sourceTree = "<group>"; };
+		4B15DBCC26E59C9F00732BE5 /* iPhone4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone4.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +66,11 @@
 		3CDCC57926E462490087F1FB /* Alamofire_Practice */ = {
 			isa = PBXGroup;
 			children = (
-				3C2E852426E4896C00F9BD95 /* junha.jpeg */,
-				3C2E852626E4918D00F9BD95 /* iphone.jpg */,
+				4B15DBC426E592E500732BE5 /* iPhone1.jpg */,
+				4B15DBC626E59C6300732BE5 /* iPhone2.jpg */,
+				4B15DBC826E59C6900732BE5 /* iPhone3.jpg */,
+				4B15DBCC26E59C9F00732BE5 /* iPhone4.jpg */,
+				4B15DBCA26E59C9600732BE5 /* iPhone5.jpg */,
 				3CDCC57A26E462490087F1FB /* AppDelegate.swift */,
 				3CDCC57E26E462490087F1FB /* ViewController.swift */,
 				3CDCC58326E4624A0087F1FB /* Assets.xcassets */,
@@ -136,10 +145,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C2E852726E4918D00F9BD95 /* iphone.jpg in Resources */,
-				3C2E852526E4896C00F9BD95 /* junha.jpeg in Resources */,
 				3CDCC58726E4624A0087F1FB /* LaunchScreen.storyboard in Resources */,
+				4B15DBC726E59C6300732BE5 /* iPhone2.jpg in Resources */,
 				3CDCC58426E4624A0087F1FB /* Assets.xcassets in Resources */,
+				4B15DBCB26E59C9600732BE5 /* iPhone5.jpg in Resources */,
+				4B15DBC926E59C6900732BE5 /* iPhone3.jpg in Resources */,
+				4B15DBC526E592E500732BE5 /* iPhone1.jpg in Resources */,
+				4B15DBCD26E59C9F00732BE5 /* iPhone4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

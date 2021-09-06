@@ -128,19 +128,21 @@ extension ViewController {
         var bodyKeyValue = [RequestBodyFormDataKeyValue]()
         
         bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "a", sValue: "b", dBlobData: Data()))
-        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "c", sValue: "d", dBlobData: Data()))
-        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "e", sValue: "f", dBlobData: Data()))
         
         //[0] Name; [1] extension
-        let oArrArray = "iphone.jpg".components(separatedBy: ".")
+        var photoArray = [[]]
+        let oArrArray = "iPhone2.jpg".components(separatedBy: ".")
         let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
-        let oImage = UIImage(named: "iphone.jpg")
+        let oImage = UIImage(named: "iPhone2.jpg")
         let dData = oImage?.pngData()
+//        let dData = oImage?.jpegData(compressionQuality: 1)
         
-        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "file", sValue: "iphone", dBlobData: dData!))
+        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: "iphone", dBlobData: dData!))
         
-        var sURL = "https://httpbin.org/post"
+        
+//        var sURL = "https://httpbin.org/post"
 //        var sURL = "https://ptsv2.com/t/6trzb-1630820390/post"
+        var sURL = "http://192.168.0.28:8000/aws/test"
         
         let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
         
