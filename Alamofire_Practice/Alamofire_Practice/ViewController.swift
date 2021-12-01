@@ -93,34 +93,62 @@ extension ViewController {
             }
         }
     }
+    //    @objc func postButtonTap(_ sender: UIButton) {
+    ////        var sURL = "https://httpbin.org/post"
+    //        var sURL = "https://ptsv2.com/t/9gmtf-1637112073/post"
+    //
+    //        let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
+    //
+    //        var  sampleRequest = URLRequest(url: URL(string: sURL)!)
+    //        sampleRequest.httpMethod = HTTPMethod.post.rawValue
+    //
+    //        AF.request(sampleRequest).uploadProgress { progress in
+    //        }.response(responseSerializer: serializer) { response in
+    //            if(response.error == nil) {
+    //                var responseString = ""
+    //
+    //                if(response.data != nil) {
+    //                    responseString = String(bytes: response.data!, encoding: .utf8)!
+    //                } else {
+    //                    responseString = response.response!.description
+    //                }
+    //                print(responseString)
+    //                print(response.response?.statusCode)
+    //
+    //                var responseData: NSData!
+    //                responseData = response.data! as NSData
+    //                //data크기가 길이와 같다고 생각하고,
+    //                var iDataLength = responseData.length
+    //                print("Size: \(iDataLength) Bytes")
+    //                print("Response Time: \(response.metrics?.taskInterval.duration ?? 0)")
+    //            }
+    //        }
+    //    }
     @objc func postButtonTap(_ sender: UIButton) {
-//        var sURL = "https://httpbin.org/post"
-        var sURL = "https://ptsv2.com/t/6trzb-1630820390/post"
+        let url = "https://ptsv2.com/t/i4tgs-1638326006/post"
+//        let url = "http://192.168.0.28:3000/auth/kakao"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
         
-        let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
+        // POST 로 보낼 정보
+        let params = ["snsID": "아이디2", "name": "이름1", "mobile": "핸드폰", "zipcode": "14232", "address1": "주소1", "address2": "주소2"] as Dictionary
         
-        var  sampleRequest = URLRequest(url: URL(string: sURL)!)
-        sampleRequest.httpMethod = HTTPMethod.post.rawValue
+        // httpBody 에 parameters 추가
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
         
-        AF.request(sampleRequest).uploadProgress { progress in
-        }.response(responseSerializer: serializer) { response in
-            if(response.error == nil) {
-                var responseString = ""
-                
-                if(response.data != nil) {
-                    responseString = String(bytes: response.data!, encoding: .utf8)!
-                } else {
-                    responseString = response.response!.description
-                }
-                print(responseString)
+        AF.request(request).responseString { (response) in
+            switch response.result {
+            case .success:
+                print("POST 성공")
                 print(response.response?.statusCode)
-                
-                var responseData: NSData!
-                responseData = response.data! as NSData
-                //data크기가 길이와 같다고 생각하고,
-                var iDataLength = responseData.length
-                print("Size: \(iDataLength) Bytes")
-                print("Response Time: \(response.metrics?.taskInterval.duration ?? 0)")
+            case .failure(let error):
+                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
         }
     }
@@ -131,30 +159,33 @@ extension ViewController {
         bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "a", sValue: "b", dBlobData: Data(), mimeType: ""))
         
         //[0] Name; [1] extension
-        var photoArray = ["iPhone1.jpg", "iPhone2.jpg", "iPhone3.jpg", "iPhone4.jpg", "iPhone5.jpg"]
-        
+//        var photoArray = ["iPhone1.jpg", "iPhone2.jpg", "iPhone3.jpg", "iPhone4.jpg", "iPhone5.jpg"]
+        var photoArray = ["nlogo.png", "iPhone1.jpg", "iPhone2.jpg"]
+
         for file in photoArray {
             let oArrArray = file.components(separatedBy: ".")
             let oImage = UIImage(named: file)
-//            let dData = oImage?.pngData()
+            //            let dData = oImage?.pngData()
             let dData = oImage?.jpegData(compressionQuality: 3)
+            
+            
             let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
-            bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: file, dBlobData: dData!, mimeType: mimeType))
+            bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: file, dBlobData: dData!, mimeType : mimeType))
         }
-//        let oArrArray = "iPhone2.jpg".components(separatedBy: ".")
-//        let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
-//        let oImage = UIImage(named: "iPhone2.jpg")
-//        let dData = oImage?.pngData()
-
-        
-//        let dData = oImage?.jpegData(compressionQuality: 1)
-        
-//        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: "iphone1", dBlobData: dData!))
+        //        let oArrArray = "iPhone2.jpg".components(separatedBy: ".")
+        //        let mimeType = self.returnMimeType(fileExtension: oArrArray[1])
+        //        let oImage = UIImage(named: "iPhone2.jpg")
+        //        let dData = oImage?.pngData()
         
         
-//        var sURL = "https://httpbin.org/post"
-//        var sURL = "https://ptsv2.com/t/6trzb-1630820390/post"
-        var sURL = "http://192.168.0.28:8000/aws/test"
+        //        let dData = oImage?.jpegData(compressionQuality: 1)
+        
+        //        bodyKeyValue.append(RequestBodyFormDataKeyValue(sKey: "filename", sValue: "iphone1", dBlobData: dData!))
+        
+        
+        //        var sURL = "https://httpbin.org/post"
+                var sURL = "https://ptsv2.com/t/i4tgs-1638326006/post"
+//        var sURL = "http://192.168.0.28:8000/aws/test"
         
         let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
         
@@ -165,38 +196,56 @@ extension ViewController {
             for formData in bodyKeyValue {
                 //data가 null인지 확인
                 if(formData.dBlobData.isEmpty) {
-                multiPartFormData.append(Data(formData.sValue.utf8), withName: formData.sKey)
+                    multiPartFormData.append(Data(formData.sValue.utf8), withName: formData.sKey)
                 } else {
+                    //👀 withName - key값 👀 fi2leName - 서버에 업로드할 파일 이름 👀 mimeType - 파일 형식
                     multiPartFormData.append(formData.dBlobData, withName: formData.sKey, fileName: "junha", mimeType: formData.mimeType)
+                    
                 }
             }
         }, to: sURL, method: .post)
-        .uploadProgress{ progress in
-            //진행상황 표시
-            print(CGFloat(progress.fractionCompleted)*100) //0.12 = 12%
-        }
-        .response{ response in
-            if(response.error == nil) {
-                var responseString: String!
-                
-                responseString = ""
-                
-                if(response.data != nil) {
-                    responseString = String(bytes: response.data!, encoding: .utf8)!
-                } else {
-                    responseString = response.response!.description
-                }
-//                print(responseString)
-                print(response.response?.statusCode)
-                
-                var responseData: NSData!
-                responseData = response.data! as NSData
-                //data크기가 길이와 같다고 생각하고,
-                var iDataLength = responseData.length
-                print("Size: \(iDataLength) Bytes")
-                print("Response Time: \(response.metrics?.taskInterval.duration ?? 0)")            }
-        }
+            .uploadProgress{ progress in
+                //진행상황 표시
+                print(CGFloat(progress.fractionCompleted)*100) //0.12 = 12%
+            }
+            .response{ response in
+                if(response.error == nil) {
+                    var responseString: String!
+                    
+                    responseString = ""
+                    print("response.error == nil")
+                    if(response.data != nil) {
+                        responseString = String(bytes: response.data!, encoding: .utf8)!
+                        print("response.data != nil")
+                    } else {
+                        responseString = response.response!.description
+                        print("response.data == nil")
+                    }
+                    //                print(responseString)
+                    print(response.response?.statusCode)
+                    
+                    var responseData: NSData!
+                    responseData = response.data! as NSData
+                    //data크기가 길이와 같다고 생각하고,
+                    var iDataLength = responseData.length
+                    print("Size: \(iDataLength) Bytes")
+                    print("Response Time: \(response.metrics?.taskInterval.duration ?? 0)")            }
+            }
     }
+}
+
+extension ViewController {
+    func convertImageToBase64(image: UIImage) -> String {
+        let imageData = image.pngData()!
+        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+    }
+    
+    func convertBase64ToImage(imageString: String) -> UIImage {
+        let imageData = Data(base64Encoded: imageString,
+                             options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
+        return UIImage(data: imageData)!
+    }
+    
 }
 
 extension ViewController {
