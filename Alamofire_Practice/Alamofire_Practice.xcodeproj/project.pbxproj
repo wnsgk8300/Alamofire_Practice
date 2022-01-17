@@ -18,6 +18,8 @@
 		4B15DBC926E59C6900732BE5 /* iPhone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBC826E59C6900732BE5 /* iPhone3.jpg */; };
 		4B15DBCB26E59C9600732BE5 /* iPhone5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBCA26E59C9600732BE5 /* iPhone5.jpg */; };
 		4B15DBCD26E59C9F00732BE5 /* iPhone4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4B15DBCC26E59C9F00732BE5 /* iPhone4.jpg */; };
+		4B7697982794EEBA003F4313 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7697972794EEB9003F4313 /* MyPageViewController.swift */; };
+		4B76979A2794F127003F4313 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7697992794F126003F4313 /* EditProfileViewController.swift */; };
 		4BCC62BA27573D7100E97DB3 /* nlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BCC62B927573D7100E97DB3 /* nlogo.png */; };
 		4BE41F2D2744BCD800FE0DF6 /* AddressSearchViewController.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE41F2C2744BCD800FE0DF6 /* AddressSearchViewController.swift.swift */; };
 		4BE41F2F2745E84C00FE0DF6 /* SnsSignInViewComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE41F2E2745E84C00FE0DF6 /* SnsSignInViewComtroller.swift */; };
@@ -35,6 +37,8 @@
 		4B15DBC826E59C6900732BE5 /* iPhone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone3.jpg; sourceTree = "<group>"; };
 		4B15DBCA26E59C9600732BE5 /* iPhone5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone5.jpg; sourceTree = "<group>"; };
 		4B15DBCC26E59C9F00732BE5 /* iPhone4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone4.jpg; sourceTree = "<group>"; };
+		4B7697972794EEB9003F4313 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		4B7697992794F126003F4313 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4BCC62B927573D7100E97DB3 /* nlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nlogo.png; path = ../../../../../Downloads/nlogo.png; sourceTree = "<group>"; };
 		4BE41F2C2744BCD800FE0DF6 /* AddressSearchViewController.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift.swift; sourceTree = "<group>"; };
 		4BE41F2E2745E84C00FE0DF6 /* SnsSignInViewComtroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsSignInViewComtroller.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				3CDCC58326E4624A0087F1FB /* Assets.xcassets */,
 				3CDCC58526E4624A0087F1FB /* LaunchScreen.storyboard */,
 				3CDCC58826E4624A0087F1FB /* Info.plist */,
+				4B7697972794EEB9003F4313 /* MyPageViewController.swift */,
+				4B7697992794F126003F4313 /* EditProfileViewController.swift */,
 			);
 			path = Alamofire_Practice;
 			sourceTree = "<group>";
@@ -172,7 +178,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B7697982794EEBA003F4313 /* MyPageViewController.swift in Sources */,
 				4BE41F2D2744BCD800FE0DF6 /* AddressSearchViewController.swift.swift in Sources */,
+				4B76979A2794F127003F4313 /* EditProfileViewController.swift in Sources */,
 				3CDCC57F26E462490087F1FB /* ViewController.swift in Sources */,
 				4BE41F2F2745E84C00FE0DF6 /* SnsSignInViewComtroller.swift in Sources */,
 				3CDCC57B26E462490087F1FB /* AppDelegate.swift in Sources */,
