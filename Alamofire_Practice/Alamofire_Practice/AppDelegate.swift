@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window!.rootViewController = ViewController()
 //        window!.rootViewController = SnsSignInViewComtroller()
 //        window!.rootViewController = AddressRegisterViewController()EditProfileViewController
-        window!.rootViewController = EditProfileViewController()
+        window!.rootViewController = EditViewController()
         window!.makeKeyAndVisible()
         
         return true
